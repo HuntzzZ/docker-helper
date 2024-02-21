@@ -341,6 +341,6 @@ services:
 ## 十四、Xiaoya周边
 
 DDS-Derek大佬的一键项目比compose方便
-
+![](https://github.com/HuntzzZ/docker-helper/blob/main/img/image.png)]
 https://github.com/DDS-Derek/xiaoya-alist
 
