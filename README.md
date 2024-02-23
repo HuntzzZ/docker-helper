@@ -344,3 +344,15 @@ DDS-Derek大佬的一键项目比compose方便
 ![](https://github.com/HuntzzZ/docker-helper/blob/main/img/image.png)
 https://github.com/DDS-Derek/xiaoya-alist
 
+## 十五、Lucky
+
+```yaml
+services:
+    lucky:
+        container_name: lucky
+        restart: always
+        network_mode: host
+        volumes:
+            - /volume1/docker/lucky:/goodluck
+        image: gdy666/lucky
+```
