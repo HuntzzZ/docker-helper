@@ -14,7 +14,7 @@ services:
     image: jxxghp/moviepilot:latest
     #image: ddsderek/moviepilot:latest
     #ports:
-    #  - 3004:3004
+    #  - 3004:3000
     volumes:
       - /volume1/docker/moviepilot/config:/config
       - /volume1/docker/moviepilot:/moviepilot
@@ -39,10 +39,6 @@ services:
       - AUTH_SITE=hdfans
       - HDFANS_UID=1
       - HDFANS_PASSKEY=1
-    logging:
-      driver: json-file
-      options:
-        max-size: 5m
     restart: always
     network_mode: host
     hostname: moviepilot
