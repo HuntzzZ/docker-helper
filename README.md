@@ -335,16 +335,18 @@ services:
 ```
 
 ## 十四、Xiaoya周边
-* DDS大佬小雅emby项目
+### DDS大佬小雅emby项目
 DDS-Derek大佬的一键项目比compose方便
 ![](https://github.com/HuntzzZ/docker-helper/blob/main/img/image.png)
 - 地址：[https://github.com/DDS-Derek/xiaoya-alist](https://github.com/DDS-Derek/xiaoya-alist)
 
-- AI老G 脚本推荐
-> 小雅全家桶安装脚本（支持AI老G版小雅Alist安装，Jellyfin安装，快速Emby安装）:
-> `bash <(curl -sSLf https://xy.ggbond.org/xy/xy_install.sh)`
-> 备用：
-> `bash -c "$(curl -sSLf https://xy.ggbond.org/xy/xy_install.sh)"`
+### AI老G 脚本推荐
+> - 小雅全家桶安装脚本（支持AI老G版小雅Alist安装，Jellyfin安装，快速Emby安装）:
+> 
+> - `bash <(curl -sSLf https://xy.ggbond.org/xy/xy_install.sh)`
+> 
+> - 备用：
+> - `bash -c "$(curl -sSLf https://xy.ggbond.org/xy/xy_install.sh)"`
 
 - 玩客云刷casaos小雅emby全家桶:
 > `bash <(curl -sSLf https://xy.ggbond.org/xy/wky_xy_emby_ailg.sh)`
