@@ -34,11 +34,13 @@ services:
       - MOVIEPILOT_AUTO_UPDATE=true
       - MOVIEPILOT_AUTO_UPDATE_DEV=flase
       #- PROXY_HOST=
-      #- AUTH_SITE=iyuu
-      #- IYUU_SIGN=
-      - AUTH_SITE=hdfans
-      - HDFANS_UID=1
-      - HDFANS_PASSKEY=1
+      #- GITHUB_TOKEN=
+      - GITHUB_PROXY=https://mirror.ghproxy.com/
+      - AUTH_SITE=iyuu
+      - IYUU_SIGN=
+      #- AUTH_SITE=hdfans
+      #- HDFANS_UID=1
+      #- HDFANS_PASSKEY=1
     restart: always
     network_mode: host
     hostname: moviepilot
