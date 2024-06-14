@@ -27,9 +27,11 @@ docker run -itd \
     -e 'SUPERUSER=admin' \
     -e 'API_TOKEN=moviepilot' \
     --restart always \
-    jxxghp/moviepilot:latest```
+    jxxghp/moviepilot:latest
+```
 
 ### docker-compose
+
 ```yaml
 version: '3.3'
 
