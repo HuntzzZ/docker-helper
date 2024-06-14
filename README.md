@@ -21,7 +21,6 @@ services:
       - /volume1/@appstore/qBittorrent/qBittorrent_conf/data/BT_backup:/BT_backup # 映射种子目录
       - /volume1/@appdata/transmission/torrents:/torrents #映射tr路径
       - /volume1/docker/nastools:/nas-tools/config # 映射NT数据
-      - /volume1/docker/emby/metadata/people:/emby/metadata/people
       - /etc/localtime:/etc/localtime
       - /volume2/media:/volume2/media
       - /var/run/docker.sock:/var/run/docker.sock
