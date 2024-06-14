@@ -6,82 +6,6 @@
 > https://zhuanlan.zhihu.com/p/558461211
 
 ## 一、moviepilot
-### docker-cli
-```yaml
-docker run -itd \
-    --name moviepilot \
-    --hostname moviepilot \
-    -p 3000:3000 \
-    -v /media:/media \
-    -v /moviepilot/config:/config \
-    -v /moviepilot/core:/moviepilot/.cache/ms-playwright \
-    -v /var/run/docker.sock:/var/run/docker.sock:ro \
-    -e 'NGINX_PORT=3000' \
-    -e 'PORT=3001'
-    -e 'PUID=0' \
-    -e 'PGID=0' \
-    -e 'UMASK=000' \
-    -e 'TZ=Asia/Shanghai' \
-    -e 'AUTH_SITE=iyuu' \
-    -e 'IYUU_SIGN=xxxx' \
-    -e 'SUPERUSER=admin' \
-    -e 'API_TOKEN=moviepilot' \
-    --restart always \
-    jxxghp/moviepilot:latest
-```
-
-### docker-compose
-
-```yaml
-version: '3.3'
-
-services:
-
-    moviepilot:
-        stdin_open: true
-        tty: true
-        container_name: moviepilot
-        hostname: moviepilot
-        networks:
-            - moviepilot
-        ports:
-            - target: 3000
-              published: 3000
-              protocol: tcp
-        volumes:
-            - '/media:/media'
-            - '/moviepilot/config:/config'
-            - '/moviepilot/core:/moviepilot/.cache/ms-playwright'
-            - '/var/run/docker.sock:/var/run/docker.sock:ro'
-        environment:
-            - 'NGINX_PORT=3000'
-            - 'PORT=3001'
-            - 'PUID=0'
-            - 'PGID=0'
-            - 'UMASK=000'
-            - 'TZ=Asia/Shanghai'
-            - 'AUTH_SITE=iyuu'
-            - 'IYUU_SIGN=xxxx'
-            - 'SUPERUSER=admin'
-            - 'API_TOKEN=moviepilot'
-        restart: always
-        image: jxxghp/moviepilot:latest
-
-networks:
-  moviepilot:
-    name: moviepilot
-```
-相关说明：
-
-/media为媒体文件目录，根据实际情况调整，需要注意的是，如果你计划使用硬链接来整理文件，那么文件下载目录和整理后的媒体库目录只能映射一个根目录不能分开映射，否则将会导致跨盘无法硬链接。 这是由docker的目录映射机制决定的，下面这些情况都会导致跨盘无法硬链接：
-下载目录和媒体库目录分别属于两个不同的磁盘
-下载目录和媒体库目录属于同一磁盘，但在两个不同的分区/存储空间/存储池中
-下载目录和媒体库目录分别作为两个目录路径映射到docker容器中
-/moviepilot/config为配置文件、数据库文件、日志文件、缓存文件使用的文件目录，该目录将会存储所有设置和数据，需根据实际情况调整。
-/moviepilot/core为浏览器内核下载保存目录（避免容器重置后重新下载浏览器内核），需根据实际情况调整。
-/var/run/docker.sock用于内建重启时使用，建议映射。
-默认使用3000为WEB服务端口，3001为Api服务端口，可根据实际情况调整。
-AUTH_SITE、SUPERUSER、API_TOKEN等其它变量请根据 配置参考 说明调整和补充，上述为最基础配置，实际可以根据需要补充其它变量。
 
 ```yaml
 version: "3"
@@ -93,7 +17,7 @@ services:
     #  - 3004:3000
     volumes:
       - /volume1/docker/moviepilot/config:/config
-      - /volume1/docker/moviepilot:/moviepilot
+      - /volume1/docker/moviepilot/core:/moviepilot/.cache/ms-playwright
       - /volume1/@appstore/qBittorrent/qBittorrent_conf/data/BT_backup:/BT_backup # 映射种子目录
       - /volume1/@appdata/transmission/torrents:/torrents #映射tr路径
       - /volume1/docker/nastools:/nas-tools/config # 映射NT数据
@@ -106,6 +30,7 @@ services:
       - PUID=0
       - PGID=0
       - UMASK=000
+      - API_TOKEN=moviepilot
       - TZ=Asia/Shanghai
       - MOVIEPILOT_AUTO_UPDATE=true
       - MOVIEPILOT_AUTO_UPDATE_DEV=flase
