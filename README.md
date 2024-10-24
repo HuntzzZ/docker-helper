@@ -69,6 +69,10 @@ services:
 ## 三、CloudDrive2
 
 ```yaml
+
+mount --bind /volume1/CloudNAS /volume1/CloudNAS
+mount --make-shared /volume1/CloudNAS
+
 version: "2.1"
 services:
   cloudnas:
