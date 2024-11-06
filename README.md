@@ -47,6 +47,42 @@ services:
     container_name: moviepilot
 ```
 
+```yaml
+version: "3"
+services:
+  moviepilot-v2:
+    image: jxxghp/moviepilot-v2:latest
+    #ports:
+    #  - 3004:3000
+    volumes:
+      - /volume1/docker/moviepilot/config:/config
+      - /volume1/docker/moviepilot/core:/moviepilot/.cache/ms-playwright
+      - /volume1/@appstore/qBittorrent/qBittorrent_conf/data/BT_backup:/BT_backup # 映射种子目录
+      #- /volume1/@appdata/transmission/torrents:/torrents #映射tr路径
+      - /etc/localtime:/etc/localtime
+      - /volume2/media:/volume2/media
+      - /var/run/docker.sock:/var/run/docker.sock
+    environment:
+      - NGINX_PORT=3000
+      - PUID=0
+      - PGID=0
+      - UMASK=022
+      - TZ=Asia/Shanghai
+      #- MOVIEPILOT_AUTO_UPDATE=true
+      #- MOVIEPILOT_AUTO_UPDATE_DEV=flase
+      #- PROXY_HOST=
+      #- GITHUB_PROXY=https://mirror.ghproxy.com/
+      - AUTH_SITE=iyuu
+      - IYUU_SIGN=
+      #- AUTH_SITE=hdfans
+      #- HDFANS_UID=1
+      #- HDFANS_PASSKEY=1
+    restart: always
+    network_mode: host
+    hostname: moviepilot
+    container_name: moviepilot-v2
+```
+
 ## 二、auto_symlink
 
 ```yaml
