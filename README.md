@@ -82,6 +82,8 @@ services:
     hostname: moviepilot
     container_name: moviepilot-v2
 ```
+企业微信推送api：https://IP:PORT/api/v1/message/?token=
+
 
 ## 二、auto_symlink
 
