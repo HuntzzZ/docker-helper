@@ -130,6 +130,10 @@ services:
     privileged: true
     network_mode: "host"
 ```
+```
+sudo mount --bind /volume1 /volume1
+sudo mount --make-shared /volume1
+```
 
 ## 四、qbittorrent
 
