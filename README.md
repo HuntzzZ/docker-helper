@@ -108,9 +108,6 @@ services:
 
 ```yaml
 
-mount --bind /volume1/CloudNAS /volume1/CloudNAS
-mount --make-shared /volume1/CloudNAS
-
 version: "2.1"
 services:
   cloudnas:
@@ -131,8 +128,8 @@ services:
     network_mode: "host"
 ```
 ```
-sudo mount --bind /volume1 /volume1
-sudo mount --make-shared /volume1
+mount --bind /volume1/CloudNAS /volume1/CloudNAS
+mount --make-shared /volume1/CloudNAS
 ```
 
 ## 四、qbittorrent
