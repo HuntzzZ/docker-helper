@@ -1,6 +1,7 @@
 ```bash
 mkdir -p emby moviepilot-v2 qbit && chmod -R 777 emby moviepilot-v2 qbit
 cd moviepilot-v2 && mkdir -p config core
+cd .. && wget https://dir.luzzzz.online/%E5%85%B6%E4%BB%96/emby%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.zip
 ```
 
 ```yaml
