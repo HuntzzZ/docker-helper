@@ -1,3 +1,9 @@
+```bash
+mkdir -p emby moviepilot-v2 qbit && chmod -R 777 emby moviepilot-v2 qbit
+cd moviepilot-v2 && mkdir -p config core
+```
+
+```yaml
 version: '3.9'
 
 services:
@@ -65,3 +71,5 @@ services:
 networks:
   moviepilot:
     name: moviepilot
+
+```
