@@ -2,6 +2,7 @@
 mkdir -p moviepilot-v2 qbit tailscale && chmod -R 777 moviepilot-v2 qbit tailscale
 cd moviepilot-v2 && mkdir -p config core
 cd .. && wget https://dir.luzzzz.online/%E5%85%B6%E4%BB%96/emby.zip
+unzip emby.zip
 wget https://dir.luzzzz.online/auto_compose.yaml
 cd tailscale && mkdir -p state dev
 ```
