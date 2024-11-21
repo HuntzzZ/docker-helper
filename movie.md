@@ -79,6 +79,13 @@ services:
     restart: unless-stopped
     image: tailscale/tailscale
 
+ sakura1:
+    container_name: sakurafrpc
+    image: natfrp.com/frpc
+    restart: on-failure:5
+    network_mode: host
+    command: --disable_log_color -f <启动参数>
+
 networks:
   moviepilot:
     name: moviepilot
