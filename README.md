@@ -409,3 +409,23 @@ services:
             - /volume1/docker/lucky:/goodluck
         image: gdy666/lucky
 ```
+
+## 十六、tailscale
+···yaml
+version: '3.7'
+services:
+    tailscale:
+        container_name: tailscale
+        volumes:
+            - ./state:/var/lib/tailscale
+            - ./dev:/dev/net/tun
+        network_mode: host
+        restart: unless-stopped
+        environment:
+            - TS_AUTHKEY=tskey-auth-xxxx    #填上一步生成的 Auth key
+            - TS_EXTRA_ARGS=--advertise-exit-node
+            - TS_ROUTES=192.168.1.0/24   #把xx替换成自己网关的网段
+            - TS_HOSTNAME=FnOS    #把xx替换成自己喜欢的名字，比如 fnOS
+            - TS_STATE_DIR=/var/lib/tailscale
+        image: tailscale/tailscale
+···
