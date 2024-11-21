@@ -411,7 +411,7 @@ services:
 ```
 
 ## 十六、tailscale
-···yaml
+```yaml
 version: '3.7'
 services:
     tailscale:
@@ -428,4 +428,4 @@ services:
             - TS_HOSTNAME=FnOS    #把xx替换成自己喜欢的名字，比如 fnOS
             - TS_STATE_DIR=/var/lib/tailscale
         image: tailscale/tailscale
-···
+```
