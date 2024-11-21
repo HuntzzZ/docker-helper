@@ -1,11 +1,12 @@
 ```bash
-mkdir -p emby moviepilot-v2 qbit && chmod -R 777 emby moviepilot-v2 qbit
+mkdir -p emby moviepilot-v2 qbit tailscale && chmod -R 777 emby moviepilot-v2 qbit tailscale
 cd moviepilot-v2 && mkdir -p config core
 cd .. && wget https://dir.luzzzz.online/%E5%85%B6%E4%BB%96/emby%E9%85%8D%E7%BD%AE%E6%96%87%E4%BB%B6.zip
+cd tailscale && mkdir -p state dev
 ```
 
 ```yaml
-version: '3.9'
+version: '3.0'
 
 services:
   moviepilot:
@@ -14,12 +15,7 @@ services:
     stdin_open: true
     tty: true
     hostname: moviepilot-v2
-    networks:
-      - moviepilot
-    ports:
-      - target: 3000
-        published: 3000
-        protocol: tcp
+    network_mode: host
     volumes:
       - '/media:/media'
       - './moviepilot-v2/config:/config'
@@ -40,6 +36,7 @@ services:
   qbittorrent:
     container_name: qbittorrent
     image: linuxserver/qbittorrent:latest
+    network_mode: host
     environment:
       - 'PUID=0'
       - 'PGID=0'
@@ -47,9 +44,7 @@ services:
       - 'WEBUI_PORT=8081'
     volumes:
       - './qbit:/config'
-      # - '/media/temp:/downloads'
       - '/media:/media'
-    network_mode: host
     restart: always
 
   embyserver:
@@ -65,9 +60,22 @@ services:
       - '/media:/media'
     devices:
       - '/dev/dri:/dev/dri'
-    # ports:
-    #   - '8096:8096'
     restart: always
+
+  tailscale:
+    container_name: tailscale
+    network_mode: host
+    volumes:
+      - './state:/var/lib/tailscale'
+      - './dev:/dev/net/tun'
+    environment:
+      - 'TS_AUTHKEY=tskey-auth-xxxx'
+      - 'TS_EXTRA_ARGS=--advertise-exit-node'
+      - 'TS_ROUTES=192.168.1.0/24'
+      - 'TS_HOSTNAME=FnOS'
+      - 'TS_STATE_DIR=/var/lib/tailscale'
+    restart: unless-stopped
+    image: tailscale/tailscale
 
 networks:
   moviepilot:
