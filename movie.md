@@ -68,12 +68,12 @@ services:
     container_name: tailscale
     network_mode: host
     volumes:
-      - './state:/var/lib/tailscale'
-      - './dev:/dev/net/tun'
+      - './tailscale/state:/var/lib/tailscale'
+      - './tailscale/dev:/dev/net/tun'
     environment:
-      - 'TS_AUTHKEY=tskey-auth-xxxx'
+      - 'TS_AUTHKEY=tskey-auth-kdbbTfSDCD11CNTRL-5L5cXxpa19VvCVQEwt2YDVUM9aYUKTno6'
       - 'TS_EXTRA_ARGS=--advertise-exit-node'
-      - 'TS_ROUTES=192.168.1.0/24'
+      - 'TS_ROUTES=192.168.31.0/24'
       - 'TS_HOSTNAME=FnOS'
       - 'TS_STATE_DIR=/var/lib/tailscale'
     restart: unless-stopped
