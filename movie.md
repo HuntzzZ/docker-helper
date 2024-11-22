@@ -9,9 +9,9 @@ cd tailscale && mkdir -p state dev
 ```bash
 wget https://dir.luzzzz.online/auto_movie.zip && unzip auto_movie.zip
 ```
-Tailscale[[Tailscale](https://login.tailscale.com/admin/machines)](https://login.tailscale.com/admin/machines)
-樱花Frp注册：[樱花Frp注册](https://openid.13a.com)](https://openid.13a.com/login)
-企业微信：[https://work.weixin.qq.com/](https://work.weixin.qq.com/)
+- Tailscale：[https://login.tailscale.com/admin/machines](https://login.tailscale.com/admin/machines)
+- 樱花Frp注册：[https://openid.13a.com](https://openid.13a.com/login)
+- 企业微信：[https://work.weixin.qq.com/](https://work.weixin.qq.com/)
 
 ```yaml
 version: '3.0'
