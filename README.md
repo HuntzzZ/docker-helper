@@ -429,3 +429,19 @@ services:
             - TS_STATE_DIR=/var/lib/tailscale
         image: tailscale/tailscale
 ```
+
+## 十七、Umbrel
+```yaml
+services:
+  umbrel:
+    image: dockurr/umbrel
+    container_name: umbrel
+    pid: host
+    ports:
+      - 80:80
+    volumes:
+      - "/home/example:/data"
+      - "/var/run/docker.sock:/var/run/docker.sock"
+    stop_grace_period: 1m
+```
+
