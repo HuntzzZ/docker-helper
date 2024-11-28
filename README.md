@@ -444,4 +444,6 @@ services:
       - "/var/run/docker.sock:/var/run/docker.sock"
     stop_grace_period: 1m
 ```
-
+```bash
+docker run -it --rm -p 80:80 -v /home/example:/data -v /var/run/docker.sock:/var/run/docker.sock --pid=host --stop-timeout 60 dockurr/umbrel
+```
