@@ -264,12 +264,13 @@ services:
       - PEERPORT=10413
       - TRANSMISSION_WEB_HOME=/config/transmission-web-control
     volumes:
-      - /volume1/docker/transmission/config:/config
-      - /volume1//downloads:/downloads
-      - /volume1/Media:/Media
+      - ./:/config
+      - /path/downloads:/downloads
+      - /path/media:/media
     network_mode: host
     restart: unless-stopped
 ```
+webUI地址：[https://github.com/jayzcoder/TrguiNG](https://github.com/jayzcoder/TrguiNG)
 
 ## 九、watchtower
 
