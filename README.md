@@ -264,7 +264,8 @@ services:
       - PEERPORT=10413
       - TRANSMISSION_WEB_HOME=/config/transmission-web-control
     volumes:
-      - ./:/config
+      - ./config:/config
+      - ./watch:/watch
       - /path/downloads:/downloads
       - /path/media:/media
     network_mode: host
