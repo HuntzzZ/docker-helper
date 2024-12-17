@@ -449,3 +449,15 @@ services:
 ```bash
 docker run -it --rm -p 80:80 -v /home/example:/data -v /var/run/docker.sock:/var/run/docker.sock --pid=host --stop-timeout 60 dockurr/umbrel
 ```
+
+## 十八、NPS
+安装
+docker pull duan2001/nps
+
+配置
+创建并修改 [nps.conf](https://github.com/djylb/nps/blob/master/conf/nps.conf)⁠ 配置文件
+
+启动
+```
+docker run -d --restart=always --name nps --net=host -v <本机conf目录>:/conf -v /etc/localtime:/etc/localtime:ro duan2001/nps
+```
