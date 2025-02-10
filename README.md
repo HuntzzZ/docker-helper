@@ -264,6 +264,8 @@ sudo docker-compose up -d
 # 关闭
 sudo docker-compose stop
 ```
+打开 webUI 并开始使用
+在浏览器中输入 设备IP:9097 即可访问 metacubexd 的界面，后端地址填写 http://设备IP:9090 ，密钥留空即可，如图所示，点击添加便可访问
 ## 七、IYUU
 
 ```yaml
