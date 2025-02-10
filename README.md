@@ -202,7 +202,7 @@ services:
 ```
 
 ## 六、Clash及Clash UI
-
+第一种
 ```yaml
 version: '3.8'
 services:
@@ -227,7 +227,43 @@ services:
     restart: unless-stopped
     network_mode: "bridge"
 ```
+第二种
+新建一个文件夹命名为 mihomo，在其中新建文本文档 config.yaml
+```
+version: '3'
 
+services:
+  metacubexd:
+    container_name: metacubexd
+    image: ghcr.io/metacubex/metacubexd
+    restart: always
+    ports:
+      - '9097:80'
+
+  mihomo:
+    container_name: mihomo
+    image: docker.io/metacubex/mihomo:Latest
+    restart: always
+    pid: host
+    ipc: host
+    network_mode: host
+    cap_add:
+      - ALL
+    volumes:
+      - <confi.yaml所在目录>:/root/.config/mihomo
+      - /dev/net/tun:/dev/net/tun
+```
+请自行修改config.yaml所在路径，修改后不含尖括号。
+
+选择一个空目录作为项目目录，在其中新建 docker-compose.yml 文件并填入上方配置内容。
+
+确保工作目录在项目目录内，并运行以下命令以启动和停止
+```
+# 启动
+sudo docker-compose up -d
+# 关闭
+sudo docker-compose stop
+```
 ## 七、IYUU
 
 ```yaml
