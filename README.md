@@ -329,6 +329,15 @@ services:
       --cleanup
       --schedule "0 0 4 * *"
 ```
+群晖任务计划启用root设置
+```
+docker run --rm
+-v /var/run/docker.sock:/var/run/docker.sock
+containrrr/watchtower
+--cleanup
+--run-once
+moviepilot-v2 lucky emby sun-panel
+```
 
 ## 十、青龙面板
 
